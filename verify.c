@@ -27,8 +27,6 @@ int verify(char *str, unsigned int ln)
  */
 int isnum(char *str, unsigned int ln)
 {
-	int i = 2;
-
 	if (isdigit(str[0]) != 0 || (str[0] == '-' && isdigit(str[1]) != 0))
 	{
 		return (atoi(str));
