@@ -88,7 +88,7 @@ void exe_pint(stack_t **stack, unsigned int ln)
 
 	if (!tail)
 	{
-		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty", ln);
+		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n", ln);
 		close_program();
 		exit(EXIT_FAILURE);
 	}
