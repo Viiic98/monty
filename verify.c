@@ -31,18 +31,8 @@ int isnum(char *str, unsigned int ln)
 
 	if (isdigit(str[0]) != 0 || (str[0] == '-' && isdigit(str[1]) != 0))
 	{
-		while (str[i])
-		{
-			if (!isdigit(str[i]))
-			{
-				dprintf(STDERR_FILENO, "L%d: usage: push integer\n", ln);
-				close_program();
-				exit(EXIT_FAILURE);
-			}
-			i++;
-		}
 		return (atoi(str));
-	} 
+	}
 	dprintf(STDERR_FILENO, "L%d: usage: push integer\n", ln);
 	close_program();
 	exit(EXIT_FAILURE);
