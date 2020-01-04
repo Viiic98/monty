@@ -28,12 +28,13 @@ int verify(char *str, unsigned int ln)
 int isnum(char *str, unsigned int ln)
 {
 	int i = 0, error = 0;
+
 	if (!str)
 		error = 1;
 
 	if (str[i] == '-' || isdigit(str[i]))
 		i++;
-	while(str[i])
+	while (str[i])
 	{
 		if (!isdigit(str[i++]))
 		{
