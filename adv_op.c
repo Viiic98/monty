@@ -21,7 +21,7 @@ void exe_mod(stack_t **stack, unsigned int ln)
 			tail = tail->next;
 		if (tail->next->n == 0)
 		{
-			dprintf(STDERR_FILENO, "L%d: division by zero", ln);
+			dprintf(STDERR_FILENO, "L%d: division by zero\n", ln);
 			close_program();
 			exit(EXIT_FAILURE);
 		}
