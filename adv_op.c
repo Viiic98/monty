@@ -137,5 +137,6 @@ void exe_pchar(stack_t **stack, unsigned int ln)
 
 	while (tail->next)
 		tail = tail->next;
+	exe_pop(stack, ln);
 	printf("%c\n", tail->n);
 }
