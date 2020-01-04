@@ -24,7 +24,7 @@ int main(int ac, char **av)
 void rfile(char *file)
 {
 	size_t len = 0;
-	char *op, *line;
+	char *op, *line, *strval;
 	int value;
 	unsigned int ln = 1;
 	FILE *mf;
@@ -40,10 +40,16 @@ void rfile(char *file)
 	{
 		while (getline(&line, &len, mf) != -1)
 		{
-			op = strtok(line, " ");
+			op = strtok(line, " \n");
 			if (strcmp(op, "push") == 0)
 			{
-				value = atoi(strtok(NULL, " \n"));
+				strval = strtok(NULL, " \n");
+				if (strval == NULL)
+				{
+					dprintf(STDERR_FILENO, "L%d: usage: push integer\n", ln);
+					exit(EXIT_FAILURE);
+				}
+				value = atoi(strval);
 				exe_push(&head, value);
 			}
 			else if (op[0] != '#')
