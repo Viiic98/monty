@@ -50,6 +50,7 @@ stack_t *exe_push(stack_t **stack, int value)
 	if (!new)
 	{
 		dprintf(STDERR_FILENO,"Error: malloc failed");
+		close_program();
 		exit(EXIT_FAILURE);
 	}
 	new->n = value;
