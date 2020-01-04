@@ -19,7 +19,6 @@ void monty_commands(stack_t **stack, char *op, unsigned int ln)
 		{"div", exe_div},
 		{"mul", exe_mul},
 		{"mod", exe_mod},
-		{"nop", NULL},
 		{NULL, NULL}
 	};
 	if (!stack && ln == 400)
@@ -27,8 +26,8 @@ void monty_commands(stack_t **stack, char *op, unsigned int ln)
 	op = strtok(op, " \n");
 	while (instructs[i].opcode)
 	{
-		if (strcmp(instructs[i].opcode, "nop") == 0)
-			continue;
+		if (strcmp(op, "nop") == 0)
+			break;
 		else if (strcmp(instructs[i].opcode, op) == 0)
 		{
 			instructs[i].f(stack, ln);
