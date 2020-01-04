@@ -61,6 +61,7 @@ void exe_sub(stack_t **, unsigned int);
 void exe_div(stack_t **, unsigned int);
 void exe_mul(stack_t **, unsigned int);
 void exe_mod(stack_t **, unsigned int);
+void exe_pchar(stack_t **, unsigned int);
 int verify(char *, unsigned int);
 int isnum(char *, unsigned int);
 void _free(stack_t **);

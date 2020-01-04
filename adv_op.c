@@ -110,3 +110,30 @@ void exe_sub(stack_t **stack, unsigned int ln)
 	}
 
 }
+
+/**
+ * exe_pchar - prints the char at the top of the stack, followed by a new line.
+ * @stack: pointer to stack
+ * @ln: line number
+ * Return: Nothing
+ */
+void exe_pchar(stack_t **stack, unsigned int ln)
+{
+	stack_t *tail = *stack;
+
+	if (!tail)
+	{
+		dprintf(STDERR_FILENO, "L%d: can't pchar, stack empty\n", ln);
+		close_program();
+		exit(EXIT_FAILURE);
+	}
+
+	if (!isascii(tail->n))
+	{
+		dprintf(STDERR_FILENO, "L%d: can't pchar, value out of range\n", ln);
+		close_program();
+		exit(EXIT_FAILURE);
+	}
+
+	printf("%c\n", tail->n);
+}

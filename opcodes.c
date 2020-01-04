@@ -19,6 +19,7 @@ void monty_commands(stack_t **stack, char *op, unsigned int ln)
 		{"div", exe_div},
 		{"mul", exe_mul},
 		{"mod", exe_mod},
+		{"pchar", exe_pchar},
 		{NULL, NULL}
 	};
 	if (!stack && ln == 400)
