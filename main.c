@@ -42,21 +42,26 @@ void rfile(char *file)
 		r = getline(&line, &len, mf);
 		while (r != -1)
 		{
+			printf("%s",line);
+
 			op = strtok(line, " \n");
-			if (strcmp(op, "push") == 0)
+			if (op)
 			{
-				strval = strtok(NULL, " \n");
-				value = verify(strval, ln);
-				exe_push(&head, value);
+				if (strcmp(op, "push") == 0)
+				{
+					strval = strtok(NULL, " \n");
+					value = verify(strval, ln);
+					exe_push(&head, value);
+				}
+				else if (op[0] != '#')
+					monty_commands(&head, op, ln);
 			}
-			else if (op[0] != '#')
-				monty_commands(&head, op, ln);
 			ln++;
 			r = getline(&line, &len, mf);
 		}
 	}
 	_free(&head);
-	free(op);
+	free(line);
 	fclose(mf);
 }
 /**
