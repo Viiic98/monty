@@ -28,12 +28,19 @@ void monty_commands(stack_t **stack, char *op, unsigned int ln)
 	while (instructs[i].opcode)
 	{
 		if (strcmp(instructs[i].opcode, "nop") == 0)
-			break;
+			continue;
 		else if (strcmp(instructs[i].opcode, op) == 0)
 		{
 			instructs[i].f(stack, ln);
 		}
 		i++;
+	}
+
+	if (!instructs[i].opcode)
+	{
+		dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n", ln, op);
+		close_program();
+		exit(EXIT_FAILURE);
 	}
 }
 /**
