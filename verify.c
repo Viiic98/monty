@@ -27,11 +27,26 @@ int verify(char *str, unsigned int ln)
  */
 int isnum(char *str, unsigned int ln)
 {
-	if (isdigit(str[0]) != 0 || (str[0] == '-' && isdigit(str[1]) != 0))
+	int i = 0, error = 0;
+	if (!str)
+		error = 1;
+
+	if (str[i] == '-' || isdigit(str[i]))
+		i++;
+	while(str[i])
 	{
-		return (atoi(str));
+		if (!isdigit(str[i++]))
+		{
+			error = 1;
+			break;
+		}
 	}
-	dprintf(STDERR_FILENO, "L%d: usage: push integer\n", ln);
-	close_program();
-	exit(EXIT_FAILURE);
+
+	if (error)
+	{
+		dprintf(STDERR_FILENO, "L%d: usage: push integer\n", ln);
+		close_program();
+		exit(EXIT_FAILURE);
+	}
+	return (atoi(str));
 }
