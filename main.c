@@ -23,9 +23,9 @@ int main(int ac, char **av)
  */
 void rfile(char *file)
 {
-	ssize_t r = 0;
+	ssize_t r;
 	size_t len = 0;
-	char *op, *line, *strval;
+	char *op = NULL, *line = NULL, *strval = NULL;
 	int value;
 	unsigned int ln = 1;
 	FILE *mf;
