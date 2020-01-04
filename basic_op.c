@@ -12,6 +12,7 @@ void exe_add(stack_t **stack, unsigned int ln)
 	if (!tail || !tail->next)
 	{
 		dprintf(STDERR_FILENO, "L%d: can't add, stack too short\n", ln);
+		close_program();
 		exit(EXIT_FAILURE);
 	}
 	else
@@ -37,6 +38,7 @@ void exe_swap(stack_t **stack, unsigned int ln)
 	if (!tail || !tail->next)
 	{
 		dprintf(STDERR_FILENO, "L%d: can't swap, stack too short\n", ln);
+		close_program();
 		exit(EXIT_FAILURE);
 	}
 	else
@@ -87,6 +89,7 @@ void exe_pint(stack_t **stack, unsigned int ln)
 	if (!tail)
 	{
 		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty", ln);
+		close_program();
 		exit(EXIT_FAILURE);
 	}
 	else
@@ -109,6 +112,7 @@ void exe_pop(stack_t **stack, unsigned int ln)
 	if (!tail)
 	{
 		dprintf(STDERR_FILENO, "L%d: can't pop an empty stack", ln);
+		close_program();
 		exit(EXIT_FAILURE);
 	}
 	else

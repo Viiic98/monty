@@ -12,6 +12,7 @@ void exe_mod(stack_t **stack, unsigned int ln)
 	if (!tail || !tail->next)
 	{
 		dprintf(STDERR_FILENO, "L%d: can't mod, stack too short\n", ln);
+		close_program();
 		exit(EXIT_FAILURE);
 	}
 	else
@@ -21,6 +22,8 @@ void exe_mod(stack_t **stack, unsigned int ln)
 		if (tail->next->n == 0)
 		{
 			dprintf(STDERR_FILENO, "L%d: division by zero", ln);
+			close_program();
+			exit(EXIT_FAILURE);
 		}
 		tail->n %= tail->next->n;
 		exe_pop(stack, ln);
@@ -39,6 +42,7 @@ void exe_mul(stack_t **stack, unsigned int ln)
 	if (!tail || !tail->next)
 	{
 		dprintf(STDERR_FILENO, "L%d: can't mul, stack too short\n", ln);
+		close_program();
 		exit(EXIT_FAILURE);
 	}
 	else
@@ -63,6 +67,7 @@ void exe_div(stack_t **stack, unsigned int ln)
 	if (!tail || !tail->next)
 	{
 		dprintf(STDERR_FILENO, "L%d: can't div, stack too short\n", ln);
+		close_program();
 		exit(EXIT_FAILURE);
 	}
 	else
@@ -72,6 +77,7 @@ void exe_div(stack_t **stack, unsigned int ln)
 		if (tail->next->n == 0)
 		{
 			dprintf(STDERR_FILENO, "L%d: division by zero\n", ln);
+			close_program();
 			exit(EXIT_FAILURE);
 		}
 		tail->n /= tail->next->n;
@@ -92,6 +98,7 @@ void exe_sub(stack_t **stack, unsigned int ln)
 	if (!tail || !tail->next)
 	{
 		dprintf(STDERR_FILENO, "L%d: can't sub, stack too short\n", ln);
+		close_program();
 		exit(EXIT_FAILURE);
 	}
 	else

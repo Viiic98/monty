@@ -63,9 +63,7 @@ void rfile(char *file)
 			r = getline(&to_free.line, &len, to_free.mf);
 		}
 	}
-	_free(&to_free.head);
-	free(to_free.line);
-	fclose(to_free.mf);
+	close_program();
 }
 /**
  * _free - frees the stack
