@@ -42,8 +42,6 @@ void rfile(char *file)
 		r = getline(&line, &len, mf);
 		while (r != -1)
 		{
-			printf("%s",line);
-
 			op = strtok(line, " \n");
 			if (op)
 			{
