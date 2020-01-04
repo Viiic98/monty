@@ -46,7 +46,7 @@ void rfile(char *file)
 				value = atoi(strtok(NULL, " \n"));
 				exe_push(&head, value);
 			}
-			else
+			else if (op[0] != '#')
 				monty_commands(&head, op, ln);
 			ln++;
 		}

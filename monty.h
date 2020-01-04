@@ -47,4 +47,9 @@ void exe_pint(stack_t **, unsigned int);
 void exe_pop(stack_t **, unsigned int);
 void exe_swap(stack_t **, unsigned int);
 void exe_add(stack_t **, unsigned int);
+void exe_sub(stack_t **, unsigned int);
+void exe_div(stack_t **, unsigned int);
+void exe_mul(stack_t **, unsigned int);
+void exe_mod(stack_t **, unsigned int);
+
 #endif
