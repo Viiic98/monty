@@ -111,7 +111,7 @@ void exe_pop(stack_t **stack, unsigned int ln)
 
 	if (!tail)
 	{
-		dprintf(STDERR_FILENO, "L%d: can't pop an empty stack", ln);
+		dprintf(STDERR_FILENO, "L%d: can't pop an empty stack\n", ln);
 		close_program();
 		exit(EXIT_FAILURE);
 	}
