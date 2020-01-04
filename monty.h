@@ -1,6 +1,14 @@
 #ifndef MONTY
 #define MONTY
 
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <string.h> 
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -30,4 +38,13 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/* Functions */
+void rfile(char*);
+stack_t *exe_push(stack_t **, int);
+void exe_pall(stack_t **, unsigned int);
+void monty_commands(stack_t **, char *, unsigned int);
+void exe_pint(stack_t **, unsigned int);
+void exe_pop(stack_t **, unsigned int);
+void exe_swap(stack_t **, unsigned int);
+void exe_add(stack_t **, unsigned int);
 #endif
