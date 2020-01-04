@@ -10,6 +10,7 @@ int verify(char *str, unsigned int ln)
 	if (!str)
 	{
 		dprintf(STDERR_FILENO, "L%d: usage: push integer\n", ln);
+		close_program();
 		exit(EXIT_FAILURE);
 	}
 	else
@@ -26,9 +27,22 @@ int verify(char *str, unsigned int ln)
  */
 int isnum(char *str, unsigned int ln)
 {
-	if (isdigit(str[0]) != 0 || (str[0] == '-' && isdigit(str[1]) != 0))
-		return (atoi(str));
+	int i = 2;
 
+	if (isdigit(str[0]) != 0 || (str[0] == '-' && isdigit(str[1]) != 0))
+	{
+		while (str[i])
+		{
+			if (!isdigit(str[i]))
+			{
+				dprintf(STDERR_FILENO, "L%d: usage: push integer\n", ln);
+				close_program();
+				exit(EXIT_FAILURE);
+			}
+			i++;
+		}
+		return (atoi(str));
+	} 
 	dprintf(STDERR_FILENO, "L%d: usage: push integer\n", ln);
 	close_program();
 	exit(EXIT_FAILURE);
