@@ -71,7 +71,7 @@ void exe_pall(stack_t **stack, unsigned int ln)
 		}
 	}
 	dprintf(STDOUT_FILENO, "%d\n", tmp->n);
-	if (ln == 123)
+	if (ln > 1)
 		return;
 }
 /**

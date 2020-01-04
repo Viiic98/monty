@@ -52,4 +52,23 @@ void rfile(char *file)
 			ln++;
 		}
 	}
+	_free(&head);
+	fclose(mf);
+}
+void _free(stack_t **stack)
+{
+	stack_t *tail = *stack;
+
+	if (!tail)
+		return;
+	while (tail->next)
+		tail = tail->next;
+	while (tail->prev)
+	{
+		tail = tail->prev;
+		free(tail->next);
+		tail->next = NULL;
+	}
+	free(tail);
+	*stack = NULL;
 }
