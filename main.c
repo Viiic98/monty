@@ -1,7 +1,6 @@
 #include "monty.h"
 
-buffers to_free = 
-{	
+buffers to_free = {
 	NULL,
 	NULL,
 	NULL

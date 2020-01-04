@@ -46,7 +46,7 @@ typedef struct buffers
 } buffers;
 
 extern buffers to_free;
-void close_program();
+void close_program(void);
 
 /* Functions */
 void rfile(char*);

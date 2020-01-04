@@ -49,7 +49,7 @@ stack_t *exe_push(stack_t **stack, int value)
 	new = malloc(sizeof(stack_t));
 	if (!new)
 	{
-		dprintf(STDERR_FILENO,"Error: malloc failed");
+		dprintf(STDERR_FILENO, "Error: malloc failed");
 		close_program();
 		exit(EXIT_FAILURE);
 	}
