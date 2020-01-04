@@ -23,6 +23,7 @@ int main(int ac, char **av)
  */
 void rfile(char *file)
 {
+	ssize_t r = 0;
 	size_t len = 0;
 	char *op, *line, *strval;
 	int value;
@@ -38,7 +39,8 @@ void rfile(char *file)
 	}
 	else
 	{
-		while (getline(&line, &len, mf) != -1)
+		r = getline(&line, &len, mf);
+		while (r != -1)
 		{
 			op = strtok(line, " \n");
 			if (strcmp(op, "push") == 0)
@@ -50,11 +52,18 @@ void rfile(char *file)
 			else if (op[0] != '#')
 				monty_commands(&head, op, ln);
 			ln++;
+			r = getline(&line, &len, mf);
 		}
 	}
 	_free(&head);
+	free(op);
 	fclose(mf);
 }
+/**
+ * _free - frees the stack
+ * @stack: pointer to stack
+ * Return: nothing, just frees
+ */
 void _free(stack_t **stack)
 {
 	stack_t *tail = *stack;
