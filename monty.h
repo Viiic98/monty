@@ -38,6 +38,16 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+typedef struct buffers
+{
+        FILE *mf;
+        stack_t *head;
+        char *line;
+} buffers;
+
+extern buffers to_free;
+void close_program();
+
 /* Functions */
 void rfile(char*);
 stack_t *exe_push(stack_t **, int);

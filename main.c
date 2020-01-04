@@ -1,4 +1,12 @@
 #include "monty.h"
+
+buffers to_free = 
+{	
+	NULL,
+	NULL,
+	NULL
+};
+
 /**
  * main - monty file interpreter
  * @ac: Number of arguments
@@ -25,42 +33,40 @@ void rfile(char *file)
 {
 	ssize_t r;
 	size_t len = 0;
-	char *op = NULL, *line = NULL, *strval = NULL;
+	char *op = NULL, *strval = NULL;
 	int value;
 	unsigned int ln = 1;
-	FILE *mf;
-	stack_t *head = NULL;
 
-	mf = fopen(file, "r");
-	if (!mf)
+	to_free.mf = fopen(file, "r");
+	if (!to_free.mf)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", file);
 		exit(EXIT_FAILURE);
 	}
 	else
 	{
-		r = getline(&line, &len, mf);
+		r = getline(&to_free.line, &len, to_free.mf);
 		while (r != -1)
 		{
-			op = strtok(line, " \n");
+			op = strtok(to_free.line, " \n");
 			if (op)
 			{
 				if (strcmp(op, "push") == 0)
 				{
 					strval = strtok(NULL, " \n");
 					value = verify(strval, ln);
-					exe_push(&head, value);
+					exe_push(&to_free.head, value);
 				}
 				else if (op[0] != '#')
-					monty_commands(&head, op, ln);
+					monty_commands(&to_free.head, op, ln);
 			}
 			ln++;
-			r = getline(&line, &len, mf);
+			r = getline(&to_free.line, &len, to_free.mf);
 		}
 	}
-	_free(&head);
-	free(line);
-	fclose(mf);
+	_free(&to_free.head);
+	free(to_free.line);
+	fclose(to_free.mf);
 }
 /**
  * _free - frees the stack
