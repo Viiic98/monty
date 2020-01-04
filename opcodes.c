@@ -31,6 +31,7 @@ void monty_commands(stack_t **stack, char *op, unsigned int ln)
 		else if (strcmp(instructs[i].opcode, op) == 0)
 		{
 			instructs[i].f(stack, ln);
+			break;
 		}
 		i++;
 	}
