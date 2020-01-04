@@ -8,7 +8,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <string.h> 
-
+#include <ctype.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -51,5 +51,6 @@ void exe_sub(stack_t **, unsigned int);
 void exe_div(stack_t **, unsigned int);
 void exe_mul(stack_t **, unsigned int);
 void exe_mod(stack_t **, unsigned int);
-
+int verify(char *, unsigned int);
+int isnum(char *, unsigned int);
 #endif

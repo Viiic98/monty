@@ -44,12 +44,7 @@ void rfile(char *file)
 			if (strcmp(op, "push") == 0)
 			{
 				strval = strtok(NULL, " \n");
-				if (strval == NULL)
-				{
-					dprintf(STDERR_FILENO, "L%d: usage: push integer\n", ln);
-					exit(EXIT_FAILURE);
-				}
-				value = atoi(strval);
+				value = verify(strval, ln);
 				exe_push(&head, value);
 			}
 			else if (op[0] != '#')
